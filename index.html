@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Brian Priambudi - Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config Script -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        script: ['"Caveat"', 'cursive'],
+                    },
+                    colors: {
+                        cyber: {
+                            black: '#03060d',
+                            dark: '#080d1a',
+                            card: 'rgba(12, 20, 38, 0.55)',
+                            cyan: '#00F0FF',
+                            'cyan-glow': 'rgba(0, 240, 255, 0.4)',
+                            blue: '#0066FF',
+                        }
+                    },
+                    boxShadow: {
+                        'glass-cyan': '0 8px 32px 0 rgba(0, 240, 255, 0.15)',
+                        'cyan-glow': '0 0 25px rgba(0, 240, 255, 0.35)',
+                        'cyan-glow-lg': '0 0 50px rgba(0, 240, 255, 0.5)',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 18s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { opacity: '0.4' },
+                            '100%': { opacity: '0.8' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Style File -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cyber-black text-slate-200 font-sans selection:bg-cyber-cyan selection:text-black overflow-x-hidden relative">
+
+    <!-- Ambient Glowing Background Elements -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 glow-blob-cyan -z-10 animate-pulse-glow"></div>
+    <div class="fixed top-1/4 right-0 glow-blob-blue -z-10"></div>
+    <div class="fixed bottom-10 left-10 glow-blob-cyan -z-10"></div>
+
+    <!-- Cyber Grid Overlay -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none -z-10 opacity-70"></div>
+
+    <!-- Mouse Tracking Dynamic Glow Light -->
+    <div id="cursor-glow" class="fixed w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out -z-10"></div>
+
+    <!-- ================= TOP NAVIGATION BAR ================= -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-8 py-4 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-5 py-3 flex items-center justify-between shadow-glass-cyan">
+            
+            <!-- Logo / Brand -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber-cyan via-cyber-blue to-cyan-400 p-[1px] shadow-cyan-glow">
+                    <div class="w-full h-full bg-cyber-black rounded-[11px] flex items-center justify-center group-hover:bg-transparent transition-all duration-300">
+                        <img 
+        src="assets/po.png" 
+        alt="Muhammad Brian Priambudi" 
+        class="h-full w-auto object-cover object-top filter contrast-110 mask-bottom-fade drop-shadow-[0_20px_35px_rgba(0,240,255,0.25)] hover:scale-105 transition-transform duration-700"
+        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80'"
+    >
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-lg tracking-wider text-white flex items-center gap-1">
+                        BRIAN<span class="text-cyber-cyan">.</span>
+                    </span>
+                    <span class="text-[10px] tracking-widest text-slate-400 font-mono uppercase">Informatics & IT Specialist</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-1 glass-panel rounded-full px-4 py-1.5 border border-cyan-500/20">
+                <a href="#karya" class="px-3.5 py-1.5 text-xs font-semibold tracking-wider text-slate-300 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-full transition-all">PROYEK</a>
+                <a href="#tentang" class="px-3.5 py-1.5 text-xs font-semibold tracking-wider text-slate-300 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-full transition-all">TENTANG</a>
+                <a href="#perjalanan" class="px-3.5 py-1.5 text-xs font-semibold tracking-wider text-slate-300 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-full transition-all">PENGALAMAN</a>
+                <a href="#sertifikasi" class="px-3.5 py-1.5 text-xs font-semibold tracking-wider text-slate-300 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-full transition-all">SERTIFIKASI</a>
+                <a href="#kontak" class="px-3.5 py-1.5 text-xs font-semibold tracking-wider text-slate-300 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-full transition-all">KONTAK</a>
+            </nav>
+
+            <!-- Status Indicator & CTA -->
+            <div class="flex items-center gap-4">
+                <div class="hidden lg:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyber-cyan/30 text-[11px] font-mono tracking-wide text-cyan-300">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyber-cyan pulse-dot"></span>
+                    </span>
+                    <span>AVAILABLE FOR COLLABORATION</span>
+                </div>
+
+                <a href="#kontak" class="glass-button px-5 py-2 rounded-xl text-xs font-display font-bold text-cyber-cyan flex items-center gap-2 group">
+                    <span>Let's Talk</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden w-9 h-9 rounded-xl glass-panel flex items-center justify-center text-cyber-cyan focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-5 shadow-glass-cyan flex flex-col gap-3 border border-cyan-500/30">
+            <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-cyan-950/40 border border-cyber-cyan/20 text-xs font-mono text-cyan-300 mb-2">
+                <span class="h-2 w-2 rounded-full bg-cyber-cyan pulse-dot"></span>
+                <span>AVAILABLE FOR COLLABORATION</span>
+            </div>
+            <a href="#karya" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-lg">PROYEK</a>
+            <a href="#tentang" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-lg">TENTANG</a>
+            <a href="#perjalanan" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-lg">PENGALAMAN</a>
+            <a href="#sertifikasi" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-lg">SERTIFIKASI</a>
+            <a href="#kontak" class="px-4 py-2 text-sm font-semibold text-slate-200 hover:text-cyber-cyan hover:bg-cyan-500/10 rounded-lg">KONTAK</a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="min-h-screen pt-24 pb-8 px-4 sm:px-8 flex flex-col justify-between relative overflow-hidden">
+        
+        <!-- TOP SUB-HEADER INFO ROW -->
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between text-xs font-mono text-slate-400 uppercase tracking-widest pt-4 z-20">
+            <div class="flex items-center gap-2">
+                <span>SOFTWARE DEVELOPER</span>
+                <span class="text-cyber-cyan">|</span>
+                <span>UI/UX DESIGNER & IT SUPPORT</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-cyber-cyan">
+                <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
+                <span>AVAILABLE FOR COLLABORATION</span>
+            </div>
+        </div>
+
+        <!-- MAIN HERO CONTENT CONTAINER WITH GIANT BACKDROP TEXT & CENTERED SUBJECT -->
+        <div class="max-w-7xl mx-auto w-full relative flex-1 flex items-center justify-center py-6">
+            
+            <!-- GIANT BACKGROUND TYPOGRAPHY: PORTFOLIO -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+                <h1 class="backdrop-portfolio-text font-display font-black text-[18vw] leading-none tracking-tighter uppercase opacity-90 text-center scale-y-110">
+                    PORTFOLIO
+                </h1>
+            </div>
+
+            <!-- GRID LAYOUT OVERLAY -->
+            <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10 relative">
+                
+                <!-- LEFT COLUMN: Main Hero Text & CTA -->
+                <div class="lg:col-span-4 flex flex-col items-start gap-4 scroll-reveal">
+                    
+                    <!-- Script Accent -->
+                    <span class="font-script text-3xl sm:text-4xl text-cyber-cyan tracking-wide -mb-2 transform -rotate-3">
+                        Hello, I'm
+                    </span>
+
+                    <!-- Giant Bold Name Headline -->
+                    <h2 class="font-display font-black text-4xl sm:text-6xl lg:text-6xl tracking-tight text-white leading-none">
+                        BRIAN<span class="text-cyber-cyan">.</span>
+                    </h2>
+
+                    <!-- Cyan Sub-headline -->
+                    <div class="font-display font-extrabold text-xs sm:text-sm text-cyber-cyan tracking-widest uppercase flex items-center gap-2">
+                        <i class="fa-solid fa-code text-xs"></i>
+                        <span>MUHAMMAD BRIAN PRIAMBUDI</span>
+                    </div>
+
+                    <!-- Short Intro Bio -->
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-sm font-normal leading-relaxed text-left">
+                        Sarjana Informatika dari Universitas Teknologi Yogyakarta. Berpengalaman dalam pengembangan aplikasi web/mobile, desain UI/UX, serta dukungan teknis & infrastruktur jaringan IT.
+                    </p>
+
+                    <!-- Main CTA Button -->
+                    <div class="pt-2">
+                        <a href="#karya" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-blue text-cyber-black font-display font-bold text-xs tracking-wider flex items-center gap-3 shadow-cyan-glow hover:shadow-cyan-glow-lg hover:scale-105 transition-all duration-300 group">
+                            <span class="uppercase">Lihat Proyek Saya</span>
+                            <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <!-- Location Tag -->
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400 pt-2">
+                        <i class="fa-solid fa-location-dot text-cyber-cyan"></i>
+                        <span>YOGYAKARTA, INDONESIA</span>
+                    </div>
+
+                </div>
+
+                <!-- CENTER COLUMN: No boundary subject portait matches Renando's Layout -->
+                <div class="lg:col-span-4 flex justify-center items-end relative min-h-[380px] sm:min-h-[520px] scroll-reveal">
+                    
+                    <!-- Subtle Glow Behind Subject -->
+                    <div class="absolute w-72 h-72 rounded-full bg-cyber-cyan/20 blur-3xl -z-10"></div>
+
+                    <!-- Subject Cutout Portrait WITHOUT Frame/Boundary -->
+                    <div class="relative w-full max-w-xs sm:max-w-sm h-[400px] sm:h-[520px] flex items-end justify-center">
+                        <img 
+                            src="assets/po.png" 
+                            alt="Muhammad Brian Priambudi" 
+                            class="h-full w-auto object-cover object-top filter contrast-110 mask-bottom-fade drop-shadow-[0_20px_35px_rgba(0,240,255,0.25)] hover:scale-102 transition-transform duration-700"
+                            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80'"
+                        >
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: Vertical Stats & Accent Quote -->
+                <div class="lg:col-span-4 flex flex-col items-start lg:items-end gap-6 scroll-reveal">
+                    
+                    <!-- Top Accent Quote -->
+                    <div class="flex items-center gap-3 text-right max-w-xs">
+                        <div class="w-8 h-8 rounded-full border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan text-xs">
+                            <i class="fa-solid fa-asterisk animate-spin-slow"></i>
+                        </div>
+                        <p class="text-xs font-mono text-slate-300 italic">
+                            Clean Code.<br/>User-Centric Design.
+                        </p>
+                    </div>
+
+                    <!-- Vertical Stat List -->
+                    <div class="flex flex-col gap-5 w-full max-w-xs pt-2">
+                        
+                        <!-- Stat 1 -->
+                        <div class="glass-panel p-3.5 rounded-2xl flex items-center justify-between border-l-4 border-l-cyber-cyan hover:translate-x-1 transition-transform">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-black text-3xl sm:text-4xl text-white">3.52</span>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400 uppercase text-right leading-tight max-w-[130px]">
+                                IPK S1 INFORMATIKA UTY
+                            </span>
+                        </div>
+
+                        <!-- Stat 2 -->
+                        <div class="glass-panel p-3.5 rounded-2xl flex items-center justify-between border-l-4 border-l-cyber-blue hover:translate-x-1 transition-transform">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-black text-3xl sm:text-4xl text-white">4</span>
+                                <span class="font-display font-black text-xl text-cyber-cyan">+</span>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400 uppercase text-right leading-tight max-w-[130px]">
+                                RIWAYAT PENGALAMAN WORK/INTERN
+                            </span>
+                        </div>
+
+                        <!-- Stat 3 -->
+                        <div class="glass-panel p-3.5 rounded-2xl flex items-center justify-between border-l-4 border-l-cyber-cyan hover:translate-x-1 transition-transform">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display font-black text-3xl sm:text-4xl text-white">4</span>
+                                <span class="font-display font-black text-xl text-cyber-cyan">+</span>
+                            </div>
+                            <a href="#sertifikasi" class="text-[11px] font-mono text-cyber-cyan hover:underline uppercase flex items-center gap-1">
+                                <span>SERTIFIKASI & KOMPETISI</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Download CV Button Link -->
+                    <a href="mailto:muhammadbrianp@gmail.com" class="flex items-center gap-2 text-xs font-mono font-bold text-slate-300 hover:text-cyber-cyan transition-colors pt-1">
+                        <i class="fa-solid fa-envelope text-cyber-cyan"></i>
+                        <span class="tracking-widest uppercase">HUBUNGI VIA EMAIL</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- HERO FOOTER BAR -->
+        <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-cyan-500/10 text-xs font-mono text-slate-400 z-20">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-cyber-cyan border border-cyber-cyan/40">
+                    <i class="fa-solid fa-laptop-code text-[12px]"></i>
+                </div>
+                <span class="font-bold tracking-wider uppercase text-slate-200">FULL-STACK & IT SUPPORT</span>
+                <span class="text-[10px] text-slate-500">NETWORKING / KYC</span>
+            </div>
+
+            <!-- Center: Scroll Indicator -->
+            <div class="flex items-center gap-2 text-slate-500">
+                <span class="tracking-widest uppercase text-[10px]">SCROLL TO DISCOVER</span>
+                <i class="fa-solid fa-arrow-down text-cyber-cyan text-[10px] animate-bounce"></i>
+            </div>
+
+            <!-- Right: Year & Category -->
+            <div class="text-slate-400">
+                <span>PORTFOLIO / 2020–2026</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FEATURED WORKS SECTION PREVIEW ================= -->
+    <section id="karya" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 scroll-reveal">
+            <div>
+                <div class="flex items-center gap-2 text-cyber-cyan text-xs font-mono tracking-widest uppercase mb-2">
+                    <i class="fa-solid fa-square-full text-[6px]"></i>
+                    <span>FEATURED PROJECTS</span>
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">PROYEK UNGGULAN</h2>
+            </div>
+            <p class="text-slate-400 text-sm max-w-md">
+                Kumpulan aplikasi web, mobile, dan sistem IoT yang telah dikembangkan dengan arsitektur modern dan interface yang user-friendly.
+            </p>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-4 flex flex-col gap-4 group scroll-reveal">
+                <div class="relative h-48 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=600&q=80" alt="Proyek IoT Rumah" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-black via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/30">IOT & HARDWARE</span>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Aplikasi Kontrol & Monitoring Rumah IoT</h3>
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2">Sistem pemantauan dan kendali otomatisasi perangkat rumah pintar berbasis Internet of Things dengan dashboard real-time.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-4 flex flex-col gap-4 group scroll-reveal">
+                <div class="relative h-48 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Aplikasi Web HR System" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-black via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/30">WEB APP / ENTERPRISE</span>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Aplikasi Web Manajemen HR System</h3>
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2">Platform sistem informasi SDM terintegrasi untuk pengelolaan data karyawan, absensi, serta manajemen alur kerja administratif.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-4 flex flex-col gap-4 group scroll-reveal">
+                <div class="relative h-48 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80" alt="Reservasi Bengkel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-black via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/30">WEB & MOBILE</span>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Aplikasi Reservasi Bengkel Web-Mobile</h3>
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2">Sistem pemesanan layanan servis kendaraan secara online berbasis responsif web & mobile untuk efisiensi antrean pelanggan.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= ABOUT & SKILLS SECTION ================= -->
+    <section id="tentang" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto relative z-10 border-t border-cyan-500/10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-5 scroll-reveal">
+                <div class="flex items-center gap-2 text-cyber-cyan text-xs font-mono tracking-widest uppercase mb-2">
+                    <i class="fa-solid fa-user text-[8px]"></i>
+                    <span>ABOUT ME</span>
+                </div>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">TENTANG SAYA</h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                    Saya merupakan Sarjana Informatika dari Universitas Teknologi Yogyakarta dengan IPK 3.52 yang memiliki keahlian seimbang antara software development, UI/UX design, data engineering, dan IT support.
+                </p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Memiliki kemampuan analisis yang tajam, problem solving, troubleshooting hardware & jaringan (Mikrotik), serta terbiasa bekerja dalam tim maupun mandiri. Cepat beradaptasi dan berdedikasi tinggi untuk terus berkembang.
+                </p>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-3 py-1.5 rounded-lg bg-cyan-950/60 border border-cyber-cyan/30 text-xs font-mono text-cyan-300">English (Intermediate)</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-cyan-950/60 border border-cyber-cyan/30 text-xs font-mono text-cyan-300">Indonesia (Native)</span>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 scroll-reveal">
+                
+                <!-- Technical Skills Panel -->
+                <div class="glass-panel p-6 rounded-2xl border border-cyan-500/20">
+                    <h3 class="font-display font-bold text-lg text-cyber-cyan mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-sm"></i>
+                        <span>Technical Skills</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> UI/UX Design & Prototyping</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> IT Support & Helpdesk</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Data Engineering Professional (RapidMiner)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Networking & Mikrotik Configuration</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Troubleshooting Hardware/Software</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> KYC & Data Verification</li>
+                    </ul>
+                </div>
+
+                <!-- Soft Skills Panel -->
+                <div class="glass-panel p-6 rounded-2xl border border-cyan-500/20">
+                    <h3 class="font-display font-bold text-lg text-cyber-cyan mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-brain text-sm"></i>
+                        <span>Soft Skills</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Problem Solving & Critical Thinking</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Kemampuan Adaptasi Tinggi</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Cepat Belajar & Inovatif</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Teamwork & Kolaborasi Interaktif</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-cyan text-[10px]"></i> Komunikasi Efektif & Pelayanan User</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= WORK EXPERIENCE / PERJALANAN ================= -->
+    <section id="perjalanan" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto relative z-10 border-t border-cyan-500/10">
+        <div class="mb-12 text-center max-w-2xl mx-auto scroll-reveal">
+            <div class="flex items-center justify-center gap-2 text-cyber-cyan text-xs font-mono tracking-widest uppercase mb-2">
+                <i class="fa-solid fa-briefcase text-[8px]"></i>
+                <span>EXPERIENCE & EDUCATION</span>
+            </div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">PERJALANAN KARIR & PENDIDIKAN</h2>
+        </div>
+
+        <div class="space-y-6 max-w-4xl mx-auto">
+            
+            <!-- Item 1 -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyber-cyan flex flex-col md:flex-row justify-between gap-4 scroll-reveal">
+                <div>
+                    <span class="text-xs font-mono text-cyber-cyan">2026</span>
+                    <h3 class="font-display font-bold text-lg text-white">IT SUPPORT</h3>
+                    <p class="text-xs text-slate-400 font-mono mb-3">PT LIQUIDNEXTGENERATION</p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                        <li>Troubleshooting hardware dan software secara komprehensif.</li>
+                        <li>Instalasi dan konfigurasi infrastruktur jaringan komputer.</li>
+                        <li>Memberikan dukungan teknis terbaik kepada seluruh user.</li>
+                        <li>Menjaga stabilitas dan keandalan sistem operasional harian.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyber-blue flex flex-col md:flex-row justify-between gap-4 scroll-reveal">
+                <div>
+                    <span class="text-xs font-mono text-cyber-cyan">2026</span>
+                    <h3 class="font-display font-bold text-lg text-white">BANKING VERIFIER</h3>
+                    <p class="text-xs text-slate-400 font-mono mb-3">PT PRIVY IDENTITAS DIGITAL</p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                        <li>Memverifikasi data identitas dan dokumen nasabah untuk layanan perbankan digital.</li>
+                        <li>Melakukan validasi KYC dan memastikan kepatuhan terhadap SOP serta regulasi.</li>
+                        <li>Mengidentifikasi potensi fraud dan ketidaksesuaian data dalam proses verifikasi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyber-cyan flex flex-col md:flex-row justify-between gap-4 scroll-reveal">
+                <div>
+                    <span class="text-xs font-mono text-cyber-cyan">2022 - 2023</span>
+                    <h3 class="font-display font-bold text-lg text-white">FREELANCE SOFTWARE DEVELOPER & UI/UX DESIGNER</h3>
+                    <p class="text-xs text-slate-400 font-mono mb-3">FREELANCE / SELF-EMPLOYED</p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                        <li>Mengembangkan beberapa website dan aplikasi Android berbasis kebutuhan client.</li>
+                        <li>Berkolaborasi dalam tim untuk menyelesaikan project tepat waktu.</li>
+                        <li>Menghasilkan solusi antarmuka user-friendly dan mendapatkan feedback positif.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyber-blue flex flex-col md:flex-row justify-between gap-4 scroll-reveal">
+                <div>
+                    <span class="text-xs font-mono text-cyber-cyan">14 JANUARI 2019 - 26 APRIL 2019</span>
+                    <h3 class="font-display font-bold text-lg text-white">IT SUPPORT (INTERNSHIP / ON THE JOB TRAINING)</h3>
+                    <p class="text-xs text-slate-400 font-mono mb-1">PT. PAL INDONESIA (PERSERO)</p>
+                    <p class="text-xs text-cyber-cyan font-mono mb-3">PREDIKAT: SANGAT BAIK (SUKET/268/51200 / IV/2019)</p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                        <li>Troubleshooting hardware dan software.</li>
+                        <li>Instalasi dan konfigurasi jaringan komputer.</li>
+                        <li>Memberikan dukungan teknis kepada user serta menjaga stabilitas sistem operasional.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Item Education -->
+            <div class="glass-panel p-6 rounded-2xl border border-cyber-cyan/40 bg-cyan-950/20 scroll-reveal">
+                <span class="text-xs font-mono text-cyber-cyan">PENDIDIKAN FORMAL</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    <div>
+                        <h4 class="font-display font-bold text-white text-sm">UNIVERSITAS TEKNOLOGI YOGYAKARTA (2020 - 2024)</h4>
+                        <p class="text-xs text-slate-300">S1 Informatika | IPK: 3.52</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-white text-sm">SMKN 1 NGANJUK (2017 - 2020)</h4>
+                        <p class="text-xs text-slate-300">Teknik Komputer dan Jaringan</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CERTIFICATIONS & COMPETITIONS SECTION ================= -->
+    <section id="sertifikasi" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto relative z-10 border-t border-cyan-500/10">
+        <div class="mb-12 text-center max-w-2xl mx-auto scroll-reveal">
+            <div class="flex items-center justify-center gap-2 text-cyber-cyan text-xs font-mono tracking-widest uppercase mb-2">
+                <i class="fa-solid fa-certificate text-[10px]"></i>
+                <span>CERTIFICATIONS & ACHIEVEMENTS</span>
+            </div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">SERTIFIKASI & KOMPETISI</h2>
+            <p class="text-slate-400 text-sm mt-3">
+                Bukti kompetensi profesional dan keikutsertaan dalam perlombaan tingkat nasional maupun provinsi.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+            <!-- Sertifikasi 1: RapidMiner -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-cyber-cyan scroll-reveal group">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/40">PROFESSIONAL CERTIFICATION</span>
+                        <i class="fa-solid fa-database text-cyber-cyan text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Data Engineering Professional</h3>
+                    <p class="text-xs text-slate-400 font-mono mt-1">RapidMiner</p>
+                    <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                        Lulus ujian sertifikasi tingkat profesional dalam Data Access, Basic Transformations, Working with Multiple Data Sets, Pivot Tables, Routines, dan Text Processing.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span>Verified via Open Badge</span>
+                    <a href="https://www.rapidminer.com/badgecheck" target="_blank" rel="noopener noreferrer" class="text-cyber-cyan hover:underline flex items-center gap-1">
+                        <span>Verify Badge</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sertifikasi 2: Sertifikat Magang PT PAL -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-cyber-blue scroll-reveal group">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/40">ON THE JOB TRAINING</span>
+                        <i class="fa-solid fa-building text-cyber-cyan text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Sertifikat Praktik Kerja Industri (Magang)</h3>
+                    <p class="text-xs text-slate-400 font-mono mt-1">PT PAL Indonesia (Persero)</p>
+                    <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                        Menyelesaikan program On the Job Training di departemen Human Capital Development PT PAL Indonesia dengan predikat <strong class="text-cyber-cyan">SANGAT BAIK</strong>.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span>No: SUKET/268/51200/IV/2019</span>
+                    <span class="text-slate-500">2019</span>
+                </div>
+            </div>
+
+            <!-- Kompetisi 1: Olimpiade Jaringan MikroTik-APJII -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-cyber-cyan scroll-reveal group">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/40">NATIONAL COMPETITION</span>
+                        <i class="fa-solid fa-network-wired text-cyber-cyan text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Olimpiade Jaringan MikroTik - APJII 2019</h3>
+                    <p class="text-xs text-slate-400 font-mono mt-1">PT Citraweb Solusi Teknologi & APJII</p>
+                    <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                        Berpartisipasi sebagai Peserta dalam Kompetisi Olimpiade Jaringan MikroTik - APJII Antar SMK-TKJ Tingkat Nasional 2019 di Surabaya.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span>No. Peserta: 1203762</span>
+                    <span class="text-slate-500">2019</span>
+                </div>
+            </div>
+
+            <!-- Kompetisi 2: Atswa NeSA Skill Competition -->
+            <div class="glass-panel glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-cyber-blue scroll-reveal group">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-cyber-black/80 text-cyber-cyan border border-cyber-cyan/40">PROVINCIAL COMPETITION</span>
+                        <i class="fa-solid fa-server text-cyber-cyan text-lg group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white group-hover:text-cyber-cyan transition-colors">Atswa NeSA Skill Competition 2019</h3>
+                    <p class="text-xs text-slate-400 font-mono mt-1">CV. Atswa Indonesia</p>
+                    <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                        Peserta Kompetisi Network & System Administrator (NeSA) Skill Competition 2019 Antar SMK Program Keahlian TKJ Tingkat Provinsi Jawa Timur.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-cyan-500/20 flex items-center justify-between text-xs font-mono text-slate-400">
+                    <span>No: 046/NESA.SC.2019/ATSWA.INA/X.2019</span>
+                    <span class="text-slate-500">2019</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="kontak" class="py-12 border-t border-cyan-500/10 px-4 sm:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+        <div class="flex items-center gap-2">
+            <span class="text-cyber-cyan">© 2026 MUHAMMAD BRIAN PRIAMUDI.</span>
+            <span>ALL RIGHTS RESERVED.</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="tel:+6281939801187" class="hover:text-cyber-cyan transition-colors">+62 819-3980-1187</a>
+            <a href="mailto:muhammadbrianp@gmail.com" class="hover:text-cyber-cyan transition-colors">muhammadbrianp@gmail.com</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/motion.js"></script>
+</body>
+</html>
